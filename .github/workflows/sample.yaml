@@ -12,20 +12,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup PHP 8.4
+      - name: Setup PHP 8.4 (latest snapshot if not stable yet)
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4' # or '8.4snapshot' if not yet stable
+          php-version: '8.4'
           coverage: none
 
       - name: Run PHP MusicXML Script
         run: |
           php index.php
 
-      - name: Upload generated files
-        uses: actions/upload-artifact@v3
+      - name: Upload generated files as artifact
+        uses: actions/upload-artifact@v4
         with:
           name: generated-files
           path: |
